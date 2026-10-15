@@ -1058,6 +1058,14 @@ def star_line(text, size):
 
 
 # ---------------------------------------------------------------- output
+def init_worker(fps):
+    """En Windows/macOS los procesos arrancan desde cero (spawn): hay que preparar todo de nuevo."""
+    global FPS
+    FPS = fps
+    if "BASE_BG" not in globals():
+        setup()
+
+
 def worker(args):
     i, f0, f1, path, fps = args
     cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(fps),
@@ -1106,12 +1114,12 @@ def main():
         if c0 < c1:
             chunks.append((i, c0, c1, os.path.join(tmp, f"seg{i:02d}.mp4"), FPS))
     print(f"renderizando {n} frames en {len(chunks)} procesos...", flush=True)
-    with Pool(len(chunks)) as pool:
+    with Pool(len(chunks), initializer=init_worker, initargs=(FPS,)) as pool:
         paths = pool.map(worker, chunks)
     lst = os.path.join(tmp, "list.txt")
     with open(lst, "w") as fh:
         for p in paths:
-            fh.write(f"file '{p}'\n")
+            fh.write("file '%s'\n" % os.path.abspath(p).replace("\\", "/"))
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst,
                     "-ss", str(start), "-t", str(end - start), "-i", AUDIO,
                     "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k",

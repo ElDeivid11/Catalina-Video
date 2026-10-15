@@ -16,3 +16,8 @@ python3 render.py                        # video completo -> out/catalina_you_ro
 python3 render.py --stills 30,70,260     # imágenes de prueba
 python3 render.py --start 60 --dur 10    # clip corto de prueba
 ```
+
+## Requisitos
+- Python 3.10+ con `pip install pillow numpy`
+- `ffmpeg` instalado y en el PATH (en Windows: `winget install ffmpeg`, luego abrir una terminal nueva).
+- Funciona en Windows, macOS y Linux. Ejecutar desde una terminal: `python render.py`.
