@@ -1112,11 +1112,12 @@ def main():
     for i in range(jobs):
         c0, c1 = f0 + i * step, min(f1, f0 + (i + 1) * step)
         if c0 < c1:
-            chunks.append((i, c0, c1, os.path.join(tmp, f"seg{i:02d}.mp4"), FPS))
+            tag = os.path.splitext(os.path.basename(a.out))[0]
+            chunks.append((i, c0, c1, os.path.join(tmp, f"{tag}_seg{i:02d}.mp4"), FPS))
     print(f"renderizando {n} frames en {len(chunks)} procesos...", flush=True)
     with Pool(len(chunks), initializer=init_worker, initargs=(FPS,)) as pool:
         paths = pool.map(worker, chunks)
-    lst = os.path.join(tmp, "list.txt")
+    lst = os.path.join(tmp, f"{tag}_list.txt")
     with open(lst, "w") as fh:
         for p in paths:
             fh.write("file '%s'\n" % os.path.abspath(p).replace("\\", "/"))
