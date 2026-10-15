@@ -744,7 +744,7 @@ def draw_background(fr, t):
         ox = 60 + 55 * math.sin(t * 0.11)
         oy = 35 + 30 * math.cos(t * 0.09)
         crop = bg.crop((int(ox), int(oy), int(ox) + W, int(oy) + H))
-        fr.alpha_composite(fade(crop, a * 0.85))
+        comp(fr, fade(crop, a * 0.85), 0, 0)
 
 
 def draw_leaks(fr, t):
