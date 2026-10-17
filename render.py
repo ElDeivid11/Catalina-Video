@@ -297,13 +297,19 @@ PHOTOS = {
     # id: (archivo, rotar, blanco&negro, foco_y, caption, sticker)
     1: ("1.jpg", 0, False, 0.45, "mi beso favorito", "black"),
     2: ("2.jpg", 0, True, 0.45, "nosotros", "orange"),
-    3: ("3.jpg", 0, False, 0.42, "nuestro lugar", "orange"),
+    3: ("3.jpg", 0, False, 0.42, "tú y yo", "orange"),
     4: ("4.jpg", 0, False, 0.42, "mi estrellita", "black"),
-    5: ("5.jpg", 90, True, 0.5, "siempre tú", "orange"),
-    6: ("6.jpg", 0, False, 0.36, "tú y yo", "black"),
-    7: ("7.jpg", 0, False, 0.36, "esa mirada", "orange"),
-    8: ("8.jpg", 0, False, 0.38, "sushi date", "black"),
-    9: ("9.jpg", 0, False, 0.40, "juntitos", "orange"),
+    6: ("6.jpg", 0, False, 0.36, "esa mirada", "black"),
+    8: ("8.jpg", 0, False, 0.38, "fan del sushi", "orange"),
+    9: ("9.jpg", 0, False, 0.40, "juntitos", "black"),
+    10: ("10.jpg", 0, False, 0.52, "mi dormilona", "orange"),
+    11: ("11.jpg", 0, False, 0.50, "nuestro caos", "black"),
+    12: ("12.jpg", 0, False, 0.45, "la más bella", "orange"),
+    13: ("13.jpg", 0, False, 0.42, "preciosa", "black"),
+    14: ("14.jpg", 0, False, 0.45, "click", "orange"),
+    15: ("15.jpg", 0, False, 0.40, "mi lugar feliz", "black"),
+    16: ("16.jpg", 0, False, 0.35, "esa sonrisa", "orange"),
+    17: ("17.jpg", 0, False, 0.40, "esa chaqueta", "black"),
 }
 
 
@@ -518,16 +524,22 @@ def make_leak():
 # ---------------------------------------------------------------- scenes
 SCENES = [
     # (inicio, fin, tipo, foto, lado)  lado: 'L' tarjeta a la izquierda
-    (bar_t(10), bar_t(18), "photo", 3, "L"),
-    (bar_t(18), bar_t(25), "photo", 6, "R"),
-    (bar_t(25), bar_t(33), "photo", 1, "L"),
-    (bar_t(33), bar_t(40), "photo", 7, "R"),
-    (bar_t(40), bar_t(48), "photo", 8, "L"),
-    (bar_t(48), bar_t(57), "photo", 4, "R"),
-    (bar_t(57), bar_t(65), "photo", 9, "L"),
-    (bar_t(65), bar_t(73), "photo", 5, "R"),
+    (bar_t(10), bar_t(14), "photo", 3, "L"),
+    (bar_t(14), bar_t(18), "photo", 14, "R"),
+    (bar_t(18), bar_t(25), "photo", 17, "L"),
+    (bar_t(25), bar_t(33), "photo", 1, "R"),
+    (bar_t(33), bar_t(38), "photo", 8, "L"),
+    (bar_t(38), bar_t(44), "photo", 6, "R"),
+    (bar_t(44), bar_t(48), "photo", 11, "L"),
+    (bar_t(48), bar_t(53), "photo", 4, "R"),
+    (bar_t(53), bar_t(57), "photo", 15, "L"),
+    (bar_t(57), bar_t(61), "photo", 9, "R"),
+    (bar_t(61), bar_t(65), "photo", 10, "L"),
+    (bar_t(65), bar_t(69), "photo", 2, "R"),
+    (bar_t(69), bar_t(73), "photo", 12, "L"),
     (bar_t(73), bar_t(81), "collage", None, None),
-    (bar_t(81), bar_t(90), "photo", 2, "L"),
+    (bar_t(81), bar_t(85), "photo", 16, "R"),
+    (bar_t(85), bar_t(90), "photo", 13, "L"),
     (bar_t(90), bar_t(99), "gallery", None, None),
 ]
 INTRO_END = bar_t(10)
@@ -570,6 +582,17 @@ def scene_at(t):
 LINE_CACHE = {}
 
 
+def sub_sprite(text, maxw, color=CREAM):
+    size, tr = 25, 7
+    while True:
+        fs = font(SANS, size, 500)
+        sp, _, _ = glow_text_sprite(text.upper(), fs, fill=color, tracking=tr, shadow_a=0.9, glow_r=10)
+        if sp.width - 60 <= maxw or size <= 15:
+            return sp
+        size -= 1
+        tr = max(3, tr - 0.5)
+
+
 def build_line(idx, col):
     key = (idx, col)
     if key in LINE_CACHE:
@@ -590,7 +613,7 @@ def build_line(idx, col):
         items.append(("hook", sp, cx - sp.width / 2, cy - 30 - sp.height / 2))
         if L.get("sub"):
             fs = font(SANS, 25, 500)
-            ss, sp2, _ = glow_text_sprite(L["sub"].upper(), fs, fill=CREAM, tracking=7, shadow_a=0.9, glow_r=10)
+            ss = sub_sprite(L["sub"], cw)
             items.append(("sub", ss, cx - ss.width / 2, cy + size * 0.42 - ss.height / 2 + 6))
     else:
         size = 70
@@ -608,7 +631,7 @@ def build_line(idx, col):
                 curw = curw + (space if len(cur) > 1 else 0) + wl
             if cur:
                 lines.append((cur, curw))
-            if len(lines) <= 2 or size <= 50:
+            if len(lines) <= 2 or (len(lines) <= 3 and size <= 58) or size <= 46:
                 break
             size -= 4
             f = font(SERIF_I, size, 560)
@@ -624,6 +647,10 @@ def build_line(idx, col):
                 items.append(("word", sp, x - pad, base_y - asc - pad, k))
                 x += wl + space
                 k += 1
+        if L.get("sub"):
+            ss = sub_sprite(L["sub"], cw, color=ORANGE_L)
+            y = top + len(lines) * lh + 44
+            items.append(("sub", ss, cx - ss.width / 2, y - ss.height / 2 + 10))
     LINE_CACHE[key] = items
     return items
 
@@ -783,7 +810,7 @@ def draw_collage(fr, t, sc):
     a = window(t, s - 0.3, e + 0.2, 1.0, 1.0)
     if a <= 0:
         return
-    v = 150
+    v = 235
     L_ = sum(c.width + 30 for c in SMALL_CARDS)
     acc = 0
     for i, c in enumerate(SMALL_CARDS):
@@ -976,12 +1003,12 @@ def setup():
     PHOTO_IMG = {pid: load_photo(pid) for pid in PHOTOS}
     PHOTO_BG = {pid: make_photo_bg(pid) for pid in PHOTOS}
     CARDS = {pid: Card(pid, 590) for pid in PHOTOS}
-    order = [3, 6, 1, 7, 8, 4, 9, 5, 2]
+    order = [3, 14, 17, 1, 8, 6, 11, 4, 15, 9, 10, 2, 12, 16, 13]
     SMALL_CARDS = []
     for i, pid in enumerate(order):
-        c = Card(pid, 300, seed=10 + i, small=True).static
-        SMALL_CARDS.append(c.rotate((-4, 3, -2, 5, -3, 2, -5, 4, -1)[i], Image.BICUBIC, expand=True))
-    GALLERY_CARDS = [Card(pid, 215, seed=20 + i, small=True).static for i, pid in enumerate([1, 6, 9, 4, 3, 7, 8, 5, 2])]
+        c = Card(pid, 290, seed=10 + i, small=True).static
+        SMALL_CARDS.append(c.rotate((-4, 3, -2, 5, -3, 2, -5, 4, -1, 3, -2, 4, -4, 2, -3)[i], Image.BICUBIC, expand=True))
+    GALLERY_CARDS = [Card(pid, 215, seed=20 + i, small=True).static for i, pid in enumerate([1, 17, 9, 4, 15, 6, 8, 2, 16])]
     print("preparando fondos...", flush=True)
     BASE_BG = make_base_bg()
     BOKEH_FAR = make_bokeh(1, 26, 30, 90, 22, 0.20)
@@ -1008,7 +1035,11 @@ def setup():
     STAR_SUB = star_line("mi estrellita", 76)
     STAR_SUB_SMALL = star_line("mi estrellita", 58)
     NAME_SMALL, _, _ = glow_text_sprite("Catalina", font(SCRIPT, 165), fill=CREAM, glow=(255, 120, 20), glow_r=26, glow_a=0.5)
-    END_LINE, _, _ = glow_text_sprite("YOU ROCK MY WORLD", font(SANS, 28, 500), fill=CREAM, tracking=18, glow=(255, 120, 20), glow_r=12, glow_a=0.4)
+    el, _, _ = glow_text_sprite("CON AMOR, DAVID", font(SANS, 28, 500), fill=CREAM, tracking=18, glow=(255, 120, 20), glow_r=12, glow_a=0.4)
+    eh = heart_sprite("black", 30)
+    END_LINE = Image.new("RGBA", (el.width + eh.width, max(el.height, eh.height)), (0, 0, 0, 0))
+    END_LINE.alpha_composite(el, (0, (END_LINE.height - el.height) // 2))
+    END_LINE.alpha_composite(eh, (el.width - 12, (END_LINE.height - eh.height) // 2))
     HUD_TEXT, _, _ = glow_text_sprite("MICHAEL JACKSON  ·  YOU ROCK MY WORLD", font(SANS, 17, 500), fill=CREAM, tracking=6, glow_r=6, pad=30)
     # estela de estrella fugaz
     sh = Image.new("RGBA", (260, 40), (0, 0, 0, 0))
