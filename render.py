@@ -658,6 +658,8 @@ def build_line(idx, col):
 def draw_lyrics(fr, t, col_fn):
     for idx, L in enumerate(LY["lines"]):
         t0 = bar_t(L["bar"]) - 0.05
+        if any(abs(bar_t(L["bar"]) - sc_[0]) < 0.01 for sc_ in SCENES[1:]):
+            t0 += 0.6  # esperar a que salga la foto anterior
         t1 = bar_t(L["bar"] + L.get("bars", 2)) - 0.05
         if not (t0 <= t < t1 + 0.1):
             continue

@@ -1,57 +1,174 @@
 {
-  "_info": "Frases del video, sacadas de nuestra historia. 'bar' = compas donde aparece (95 BPM, 1 compas = 2.526 s, compas 0 = 0.227 s). 'bars' = cuantos compases dura. style 'line' = frase normal, 'hook' = frase grande en caligrafia. 'sub' = texto chico debajo (autor/fecha o traduccion).",
+  "_info": "Poema 'Lo que me pasa contigo' (David, para Catalina). 'bar' = compas donde aparece (95 BPM, 1 compas = 2.526 s, compas 0 = 0.227 s). 'bars' = cuantos compases dura. style 'line' = verso, 'hook' = frase grande en caligrafia. 'sub' = texto chico debajo.",
   "bpm": 95.0,
   "offset": 0.22697,
   "lines": [
-    {"bar": 10, "text": "Todo empezó un 21 de mayo", "sub": "flores, un mojito y muchos nervios"},
-    {"bar": 12, "text": "«Cuando te vi con las flores, ya me enamoré»", "sub": "— Cata, esa misma noche"},
-    {"bar": 14, "text": "«Quería darte una buena primera impresión»", "sub": "— David"},
-    {"bar": 16, "text": "y sin darme cuenta, me robaste el corazón"},
-    {"bar": 18, "text": "«Te vi hoy, y me volví a enamorar»", "sub": "— David, 23 de mayo"},
-    {"bar": 20, "text": "«Esa chaqueta de mezclilla te queda increíble»", "sub": "— Cata ksksksks"},
-    {"bar": 22, "text": "«Desde que te conocí, cada vez que pienso en perfección, te recuerdo a ti»", "sub": "— David"},
-    {"bar": 24, "bars": 1, "text": "y entonces..."},
-
-    {"bar": 25, "style": "hook", "text": "Te amo", "sub": "25 de mayo · el primer «te amo»"},
-    {"bar": 27, "text": "«Me ganó y simplemente me salió decírtelo»", "sub": "— David"},
-    {"bar": 29, "style": "hook", "text": "You rock my world", "sub": "«sentí que te salió del alma» — Cata"},
-    {"bar": 31, "text": "«Tú eres literalmente todo lo que siempre quise encontrar»", "sub": "— Cata, 27 de mayo"},
-
-    {"bar": 34, "text": "«El sushi se puso la 10»", "sub": "— Cata"},
-    {"bar": 36, "text": "«Ya me volví fan del sushi»", "sub": "— David, gracias a ti"},
-    {"bar": 38, "text": "«Cuando me estresaba, te miraba y se me pasaba»", "sub": "— Cata"},
-    {"bar": 40, "text": "«Quédate siempre a mi lado, porfi»", "sub": "— Cata"},
-    {"bar": 42, "text": "«No me voy a ir a ningún lado sin ti»", "sub": "— David"},
-    {"bar": 44, "text": "«Amo quien eres conmigo…»", "sub": "— Cata"},
-    {"bar": 46, "text": "«…y amo quien soy contigo»"},
-
-    {"bar": 49, "style": "hook", "text": "You rock my world", "sub": "y lo haces todos los días"},
-    {"bar": 51, "text": "«Ahora tengo una sonrisa desde que despierto hasta que me duermo»", "sub": "— Cata"},
-    {"bar": 53, "style": "hook", "text": "Mi lugar feliz", "sub": "«solo abrazaditos para la eternidad»"},
-    {"bar": 55, "text": "«Mis ojitos se me llenan de lágrimas, de lo feliz que soy»", "sub": "— Cata"},
-    {"bar": 57, "text": "«No puedo creer que alguien tan genial como tú me mirara»", "sub": "— Cata"},
-    {"bar": 59, "text": "y yo no puedo creer la suerte que tuve de encontrarte"},
-    {"bar": 61, "text": "«Yo duermo siempre en cualquier parte»", "sub": "— la dormilona más linda"},
-    {"bar": 63, "text": "y yo te cuidaría el sueño en cada viaje"},
-    {"bar": 65, "style": "hook", "text": "You rock my world", "sub": "en blanco y negro o a todo color"},
-    {"bar": 67, "text": "«Siempre que me ames y me cuides, yo jamás me iré»", "sub": "— Cata"},
-    {"bar": 69, "style": "hook", "text": "La más bella", "sub": "en cada fiesta y en cada lugar"},
-    {"bar": 71, "text": "«Para mí siempre serás la mujer más bella»", "sub": "— David"},
-
-    {"bar": 73, "text": "Buenos Aires, Nueva Zelanda, un sushi más…", "sub": "todo lo que nos prometimos"},
-    {"bar": 75, "text": "«Quiero un futuro contigo»", "sub": "— David"},
-    {"bar": 77, "text": "«Quiero amarte siempre»", "sub": "— Cata"},
-    {"bar": 79, "text": "«Me gusta el corazón negro, porque desde el principio siempre fue ese»", "sub": "— David"},
-
-    {"bar": 81, "text": "¿Por qué «mi estrellita»?"},
-    {"bar": 83, "text": "«Porque en todos lados tú serás la que más brilles»", "sub": "— David, 1 de junio"},
-    {"bar": 85, "text": "no solo por lo hermosa que eres"},
-    {"bar": 87, "text": "sino por la forma increíble que tienes de ser"},
-    {"bar": 89, "bars": 1, "style": "hook", "text": "Catalina..."},
-
-    {"bar": 90, "style": "hook", "text": "You rock my world", "sub": "te amo con toda mi vida"},
-    {"bar": 92, "text": "«El tiempo no mide el amor»", "sub": "— Cata"},
-    {"bar": 94, "style": "hook", "text": "Te amo", "sub": "a más no poder"},
-    {"bar": 96, "text": "gracias por existir, mi estrellita"}
+    {
+      "bar": 10,
+      "style": "hook",
+      "text": "Lo que me pasa contigo"
+    },
+    {
+      "bar": 12,
+      "text": "Me gusta cómo hablas,"
+    },
+    {
+      "bar": 14,
+      "text": "cómo cuentas las cosas sin pensarlo tanto,"
+    },
+    {
+      "bar": 16,
+      "text": "como si no te importara si suena bien o mal,"
+    },
+    {
+      "bar": 18,
+      "text": "solo lo dices y ya, así, como eres tú."
+    },
+    {
+      "bar": 20,
+      "text": "Eso fue lo primero que noté de ti,"
+    },
+    {
+      "bar": 22,
+      "bars": 1,
+      "text": "en esa primera cita, sin darme cuenta,"
+    },
+    {
+      "bar": 23,
+      "text": "mientras tú hablabas yo ya estaba pensando"
+    },
+    {
+      "bar": 25,
+      "text": "«me gusta esto, me gusta cómo es ella»"
+    },
+    {
+      "bar": 27,
+      "style": "hook",
+      "text": "You rock my world",
+      "sub": "así, como eres tú"
+    },
+    {
+      "bar": 29,
+      "style": "hook",
+      "text": "Y después están tus ojos"
+    },
+    {
+      "bar": 31,
+      "text": "que no sé si es porque te miro yo así o por ti,"
+    },
+    {
+      "bar": 34,
+      "text": "pero cuando me miras se te abren enteros,"
+    },
+    {
+      "bar": 36,
+      "text": "me miras hacia arriba y se te ponen así, grandes,"
+    },
+    {
+      "bar": 38,
+      "text": "y ahí quedo yo, sin saber qué decir,"
+    },
+    {
+      "bar": 40,
+      "text": "se me olvida lo que estaba pensando,"
+    },
+    {
+      "bar": 42,
+      "text": "se me olvida todo, la verdad,"
+    },
+    {
+      "bar": 44,
+      "text": "y solo pienso..."
+    },
+    {
+      "bar": 46,
+      "style": "hook",
+      "text": "«qué suerte tengo»"
+    },
+    {
+      "bar": 49,
+      "style": "hook",
+      "text": "You rock my world"
+    },
+    {
+      "bar": 51,
+      "text": "No sé escribir cosas grandes ni bonitas de verdad,"
+    },
+    {
+      "bar": 53,
+      "text": "pero si algo sé hacer bien,"
+    },
+    {
+      "bar": 55,
+      "text": "es darme cuenta cuando algo vale la pena,"
+    },
+    {
+      "bar": 57,
+      "text": "y tú eres de las cosas que más valen la pena"
+    },
+    {
+      "bar": 59,
+      "text": "que me han pasado en la vida."
+    },
+    {
+      "bar": 63,
+      "style": "hook",
+      "text": "You rock my world",
+      "sub": "lo que más vale la pena"
+    },
+    {
+      "bar": 67,
+      "style": "hook",
+      "text": "Mi estrellita"
+    },
+    {
+      "bar": 71,
+      "style": "hook",
+      "text": "You rock my world",
+      "sub": "así, como eres tú"
+    },
+    {
+      "bar": 75,
+      "style": "hook",
+      "text": "Te amo, Catalina"
+    },
+    {
+      "bar": 81,
+      "text": "Así que si un día se te olvida"
+    },
+    {
+      "bar": 83,
+      "text": "por qué te elegí, o por qué sigo aquí,"
+    },
+    {
+      "bar": 85,
+      "bars": 1,
+      "style": "hook",
+      "text": "acuérdate de esto:"
+    },
+    {
+      "bar": 86,
+      "text": "fue por cómo hablas, por cómo me miras,"
+    },
+    {
+      "bar": 88,
+      "text": "por esos ojos que se abren para mí,"
+    },
+    {
+      "bar": 90,
+      "text": "y porque contigo hasta el silencio se siente bien."
+    },
+    {
+      "bar": 92,
+      "text": "Eso no cambia, eso se queda,"
+    },
+    {
+      "bar": 94,
+      "text": "para hoy,"
+    },
+    {
+      "bar": 96,
+      "text": "y para todos los días que vengan."
+    }
   ]
 }
